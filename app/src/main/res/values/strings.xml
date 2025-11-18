@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Quotely</string>
+    <string name="text_explore">Explore</string>
+    <string name="text_view_all">View All</string>
+    <string name="text_saved">Saved Quotes</string>
+    <string name="text_latest_quotes">Latest Quotes</string>
+    <string name="text_awesome_quotes_from_our_community">Awesome quotes from our community</string>
+    <string name="text_categories">Categories</string>
+</resources>
