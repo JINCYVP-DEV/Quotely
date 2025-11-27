@@ -6,14 +6,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -24,22 +25,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.nj.quotely.data.Quote
-import com.nj.quotely.presentation.ui.theme.Normal14
-import com.nj.quotely.presentation.ui.theme.Normal8
+import com.nj.quotely.presentation.ui.theme.Bold12
+import com.nj.quotely.presentation.ui.theme.Medium14
+
 
 @Composable
-fun QuotesCard(modifier: Modifier = Modifier, item: Quote,onSave:(Quote)-> Unit) {
+fun QuoteListItem(item: Quote,onSave:(Quote)-> Unit) {
     val fillIcon =  if (item.isSaved)  Icons.Default.Favorite else Icons.Default.FavoriteBorder
     val favoriteTint = if (item.isSaved) Color.Red else Color.White
     Card(
-        modifier = modifier
-            .width(200.dp)
-            .height(240.dp)
-            .clip(RoundedCornerShape(16.dp))
+        modifier = Modifier
+            .height(150.dp)
+            .fillMaxWidth()
+            .padding(12.dp)
+            .clip(
+                shape = RoundedCornerShape(12.dp)
+            )
+
     )
     {
         Column(
@@ -48,52 +52,43 @@ fun QuotesCard(modifier: Modifier = Modifier, item: Quote,onSave:(Quote)-> Unit)
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                          item.color,
-                            item.color.copy(alpha = 0.7f)
+                            item.color, item.color.copy(
+                                alpha = .8f
+                            )
                         )
                     )
                 )
-                .padding(20.dp)
         ) {
-
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                CircleShapeComponent(0.04f)
-                SpacerWeight1f()
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+            ) {
                 Icon(
-                    Icons.Default.Share,
-                    contentDescription = "ic_share",
-                    tint = Color.White
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "avatar",
+                    tint = Color.White,
+                    modifier = Modifier
                 )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = item.author, style = MaterialTheme.typography.Bold12.copy(color = Color.White))
+                SpacerWeight1f()
                 Icon(
                     fillIcon,
                     contentDescription = "save",
                     tint = favoriteTint,
-                    modifier = Modifier.clickable{
-                        onSave(item.copy(isSaved = true))
+                    modifier = Modifier.clickable {
+                        onSave(item)
                     }
                 )
             }
-            SpacerWeight1f()
+            Spacer(modifier = Modifier.height(5.dp))
             Text(
-                item.text,
-                style = MaterialTheme.typography.Normal14.copy(
-                    color = Color.White,
-                    lineHeight = 16.sp
-                ),
+                text = item.text,
+                style = MaterialTheme.typography.Medium14.copy(color = Color.White),
+                modifier = Modifier.padding(10.dp)
             )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                item.author,
-                style = MaterialTheme.typography.Normal8.copy(
-                    color = Color.White,
-                    lineHeight = 16.sp,
-                    fontStyle = FontStyle.Italic
-                ),
-                modifier = Modifier.padding(4.dp)
-            )
-
         }
-
     }
 }
-

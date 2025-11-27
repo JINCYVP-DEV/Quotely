@@ -39,11 +39,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nj.quotely.R
-import com.nj.quotely.data.Quote
+import com.nj.quotely.data.QuoteCategory
 import com.nj.quotely.presentation.components.QuotelyTopBar
 import com.nj.quotely.presentation.components.QuotesCard
 import com.nj.quotely.presentation.components.SectionHeader
-import com.nj.quotely.presentation.screens.saved.SavedScreenNavigation
 import com.nj.quotely.presentation.ui.theme.Bold20
 import com.nj.quotely.presentation.ui.theme.Medium12
 import com.nj.quotely.presentation.ui.theme.Normal12
@@ -62,7 +61,10 @@ fun HomeScreen(
     onNavigation: (HomeScreenNavigation) -> Unit
 ) {
     val fullQuotesList = viewModel.quotesList.collectAsStateWithLifecycle()
-    val halfQuotesList = fullQuotesList.value.take((fullQuotesList.value.size) / 2)
+    val fullCategoryList = viewModel.categoryList.collectAsStateWithLifecycle()
+
+    val halfQuotesList = fullQuotesList.value.take(fullQuotesList.value.size / 2)
+    val halfCategoryList =  fullCategoryList.value.take(fullCategoryList.value.size/2)
     Scaffold(topBar = {
         QuotelyTopBar(
             title = stringResource(R.string.text_explore),
@@ -73,7 +75,7 @@ fun HomeScreen(
         )
     }) {
         LazyColumn(
-            modifier = modifier
+            modifier = modifier.background(Color.White)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -122,7 +124,7 @@ fun HomeScreen(
                     items(halfQuotesList) { itemContent ->
                         QuotesCard(Modifier, itemContent)
                         {
-                            viewModel.saveItem(it)
+                            viewModel.onSave(it)
                         }
                     }
                 }
@@ -143,14 +145,13 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     contentPadding = PaddingValues(horizontal = 16.dp)
                 ) {
-                    items(halfQuotesList) { item ->
+                    items(halfCategoryList) { item ->
                         QuotesCategoryComponent(item = item)
                         {
                             onNavigation(HomeScreenNavigation.OnNavigateToCategories(it))
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(16.dp))
             }
 
         }
@@ -158,14 +159,14 @@ fun HomeScreen(
 }
 
 @Composable
-fun QuotesCategoryComponent(modifier: Modifier = Modifier, item: Quote, onClick: (String) -> Unit) {
+fun QuotesCategoryComponent(modifier: Modifier = Modifier, item: QuoteCategory, onClick: (String) -> Unit) {
 
     Card(
         modifier = modifier
             .width(100.dp)
             .clip(RoundedCornerShape(16.dp))
             .clickable {
-                onClick(item.category.displayName)
+                onClick(item.displayName)
             },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -182,20 +183,20 @@ fun QuotesCategoryComponent(modifier: Modifier = Modifier, item: Quote, onClick:
                 modifier = Modifier
                     .size(44.dp)
                     .clip(CircleShape),
-                color = item.category.bgColor.copy(alpha = 0.4f)
+                color = item.bgColor.copy(alpha = 0.4f)
 
             ) {
                 Icon(
-                    item.category.icon,
+                    item.icon,
                     "",
                     Modifier
                         .size(44.dp)
                         .padding(12.dp),
-                    tint = item.category.bgColor
+                    tint = item.bgColor
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
-            Text(item.category.displayName, style = MaterialTheme.typography.Medium12)
+            Text(item.displayName, style = MaterialTheme.typography.Medium12)
             Spacer(modifier = Modifier.height(8.dp))
 
         }

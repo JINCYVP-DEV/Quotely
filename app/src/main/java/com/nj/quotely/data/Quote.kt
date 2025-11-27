@@ -9,6 +9,7 @@ data class Quote(
     val category: QuoteCategory,
     val color: Color,
     val avatar: String = "👤",
+    var isSaved: Boolean =false
 ) {
     companion object {
         fun getQuotes(): List<Quote> {
