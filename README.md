@@ -82,24 +82,3 @@ Completed
 
 # Screenshots : 
 
-
-![IMG_20251130_214919](https://github.com/user-attachments/assets/929779b6-05b4-4736-8618-9c1bf2c0b9d4)
-
-
-
-
-![IMG_20251130_214933](https://github.com/user-attachments/assets/6b3fb149-e864-4fbb-a122-6bb1541565d8)
-
-
-
-![IMG_20251130_214946](https://github.com/user-attachments/assets/86f5d4c5-c150-4775-a0e0-55a54c22096d)
-
-
-
-
-![IMG_20251130_215001](https://github.com/user-attachments/assets/e61b15c1-ce9f-4b6f-91d0-66b68d7e7ee5)
-
-
-
-
-![IMG_20251130_215022](https://github.com/user-attachments/assets/372a860c-a1eb-478c-aef7-a7a1e6ce5c1e)
