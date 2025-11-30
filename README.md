@@ -3,6 +3,7 @@ The quote app
 QuoteVault is a lightweight, offline-first quote browsing application designed for simplicity and inspiration. All quotes are stored locally, allowing users to explore, save, and organize motivational content anytime—without needing an internet connection.
 
 Features :
+
 Dashboard :
 Get a quick overview of:
 Latest quotes
