@@ -2,9 +2,9 @@
 The quote app
 QuoteVault is a lightweight, offline-first quote browsing application designed for simplicity and inspiration. All quotes are stored locally, allowing users to explore, save, and organize motivational content anytime—without needing an internet connection.
 
-Features :
+# Features :
 
-Dashboard :
+# Dashboard :
 
 
 Get a quick overview of:
@@ -19,7 +19,7 @@ Categories
 Fast navigation to every major section
 
 
-Explore :
+# Explore :
 
 
 Browse a curated collection of quotes completely offline
@@ -32,7 +32,7 @@ Fast loading since all data is stored locally
 
 
 
-Save Favourites:
+# Save Favourites:
 
 
 Save and manage your favorite quotes
@@ -43,7 +43,7 @@ One-tap save/delete
 
 Access all saved quotes in a dedicated screen
 
-Categories :
+# Categories :
 
 
 Discover quotes based on categories such as:
@@ -59,7 +59,7 @@ Success
 Love
 
 
-Technologies Used :
+# Technologies Used :
 
 
 Android: The primary platform for the application.
@@ -76,5 +76,6 @@ MVVM Architecture – Clear separation of UI and logic using ViewModel, StateFlo
 
 Coroutines and Flow API: For asynchronous programming and reactive data streams.
 
-Status
+# Status
+
 Completed
