@@ -4,7 +4,7 @@ QuoteVault is a lightweight, offline-first quote browsing application designed f
 
 # Features :
 
-# Dashboard :
+**Dashboard :**
 
 
 Get a quick overview of:
@@ -19,7 +19,7 @@ Categories
 Fast navigation to every major section
 
 
-# Explore :
+**Explore :**
 
 
 Browse a curated collection of quotes completely offline
@@ -32,7 +32,7 @@ Fast loading since all data is stored locally
 
 
 
-# Save Favourites:
+**Save Favourites:**
 
 
 Save and manage your favorite quotes
@@ -43,7 +43,7 @@ One-tap save/delete
 
 Access all saved quotes in a dedicated screen
 
-# Categories :
+**Categories :**
 
 
 Discover quotes based on categories such as:
@@ -79,3 +79,21 @@ Coroutines and Flow API: For asynchronous programming and reactive data streams.
 # Status
 
 Completed
+
+# Screenshots : 
+
+
+![Screenshot_2025-11-30-21-01-35-50_deb561bbfc190378e32375c26b22664e](https://github.com/user-attachments/assets/a90269f5-bbcf-4f11-b710-1905950c7d2f)
+
+
+![Screenshot_2025-11-30-20-59-06-64_deb561bbfc190378e32375c26b22664e](https://github.com/user-attachments/assets/72c463cf-a468-4b4a-ad3c-aac14b418a38)
+
+
+![Screenshot_2025-11-30-21-02-09-13_deb561bbfc190378e32375c26b22664e](https://github.com/user-attachments/assets/9b9e5adc-26b0-450d-b355-7fd6c2e3c8d0)
+
+
+![Screenshot_2025-11-30-20-58-26-31_deb561bbfc190378e32375c26b22664e](https://github.com/user-attachments/assets/e7c0da54-99e8-4b05-ace4-2f7d001c1104)
+
+
+![Screenshot_2025-11-30-20-58-59-58_deb561bbfc190378e32375c26b22664e](https://github.com/user-attachments/assets/f75f5ee1-a744-48ef-b29a-463b6bc3be6f)
+
