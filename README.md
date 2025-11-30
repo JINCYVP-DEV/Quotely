@@ -5,22 +5,32 @@ QuoteVault is a lightweight, offline-first quote browsing application designed f
 Features :
 
 Dashboard :
+
+
 Get a quick overview of:
+
+
 Latest quotes
 Categories
 Fast navigation to every major section
 
 Explore
+
+
 Browse a curated collection of quotes completely offline
 Smooth and minimal UI for easy reading
 Fast loading since all data is stored locally
 
 Save Favourites:
+
+
 Save and manage your favorite quotes
 One-tap save/delete
 Access all saved quotes in a dedicated screen
 
 Categories :
+
+
 Discover quotes based on categories such as:
 Life
 Motivation
@@ -28,7 +38,9 @@ Leadership
 Success
 Love
 
-Technologies Used
+Technologies Used :
+
+
 Android: The primary platform for the application.
 Kotlin: The programming language used for development.
 Jetpack Compose: For UI development.
