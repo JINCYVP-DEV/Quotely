@@ -2,7 +2,6 @@ package com.nj.quotely.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,7 +32,7 @@ import com.nj.quotely.presentation.ui.theme.Medium14
 
 
 @Composable
-fun QuoteListItem(item: Quote, onSave: (Quote) -> Unit) {
+fun QuoteListItem(item: Quote, onSave: (Quote) -> Unit,showSaveIcon :Boolean=true) {
     val fillIcon = if (item.isSaved) Icons.Default.Favorite else Icons.Default.FavoriteBorder
     val favoriteTint = if (item.isSaved) Color.Red else Color.White
     Card(
@@ -44,7 +43,6 @@ fun QuoteListItem(item: Quote, onSave: (Quote) -> Unit) {
             .clip(
                 shape = RoundedCornerShape(12.dp)
             )
-
     )
     {
         Column(
@@ -78,14 +76,13 @@ fun QuoteListItem(item: Quote, onSave: (Quote) -> Unit) {
                     style = MaterialTheme.typography.Bold12.copy(color = Color.White)
                 )
                 SpacerWeight1f()
+                if (showSaveIcon)
                 Icon(
                     fillIcon,
                     contentDescription = "save",
                     tint = favoriteTint,
                     modifier = Modifier.clickable(
-                        onClick = { onSave(item) },
-                        indication = null,
-                        interactionSource = MutableInteractionSource()
+                        onClick = { onSave(item) }
                     )
                 )
             }

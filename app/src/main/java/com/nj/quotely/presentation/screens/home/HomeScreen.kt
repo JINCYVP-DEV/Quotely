@@ -2,7 +2,6 @@ package com.nj.quotely.presentation.screens.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -65,9 +64,10 @@ fun HomeScreen(
 
     val halfQuotesList = fullQuotesList.value.take(fullQuotesList.value.size / 2)
     val halfCategoryList =  fullCategoryList.value.take(fullCategoryList.value.size/2)
-    Scaffold(topBar = {
+    Scaffold(containerColor = Color.White,
+        topBar = {
         QuotelyTopBar(
-            title = stringResource(R.string.text_explore),
+            title = stringResource(R.string.text_home),
             showBackButton = false,
             onBack = {
                 onNavigation(HomeScreenNavigation.OnBackPressed)
@@ -75,7 +75,7 @@ fun HomeScreen(
         )
     }) {
         LazyColumn(
-            modifier = modifier.background(Color.White)
+            modifier = modifier
                 .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {

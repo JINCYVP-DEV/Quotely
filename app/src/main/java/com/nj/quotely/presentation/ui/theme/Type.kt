@@ -95,11 +95,6 @@ val Typography.Bold12: TextStyle
 
 
 
-
-
-
-
-
 val Typography.Medium10: TextStyle
     @Composable
     get() {

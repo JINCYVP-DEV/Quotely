@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,7 +28,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nj.quotely.presentation.components.QuoteListItem
 import com.nj.quotely.presentation.components.QuotelyTopBar
-import kotlinx.coroutines.launch
 
 sealed class CategoryScreenNavigation {
     object OnBackPressed : CategoryScreenNavigation()
@@ -48,13 +46,13 @@ fun CategoryScreen(
 
     Scaffold(topBar = {
         QuotelyTopBar(
-            title = stringResource(com.nj.quotely.R.string.text_explore),
+            title = stringResource(com.nj.quotely.R.string.text_categories),
             showBackButton = true,
             onBack = {
                 onNavigation(CategoryScreenNavigation.OnBackPressed)
             }
         )
-    }) { inn ->
+    },containerColor = Color.White) { inn ->
         var selectedIndex by remember { mutableIntStateOf(0) }
             if (!selectedCategory.isNullOrEmpty()) {
                 val index = categories.value.indexOf(selectedCategory)
@@ -70,7 +68,8 @@ fun CategoryScreen(
 
             LazyRow(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(12.dp),
                 state =listState,
                 horizontalArrangement = Arrangement.spacedBy(5.dp)
             ) {
@@ -86,7 +85,7 @@ fun CategoryScreen(
                                 viewModel.filterCategory(categories.value[index])
                             }
                             .background(
-                                if (isSelected) Color.Green.copy(alpha = .1f) else Color.White,
+                                if (isSelected) Color.Green.copy(alpha = .1f) else Color.LightGray.copy(alpha = .1f),
                                 shape = RoundedCornerShape(12.dp)
                             )
                             .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -102,8 +101,9 @@ fun CategoryScreen(
                 items(allQuotes.value)
                 {
                     QuoteListItem(
-                        it,
-                        onSave = {}
+                        item = it,
+                        onSave = {
+                        },showSaveIcon=false
                     )
                 }
             }
