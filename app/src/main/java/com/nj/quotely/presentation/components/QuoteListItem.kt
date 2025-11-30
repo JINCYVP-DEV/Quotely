@@ -2,6 +2,7 @@ package com.nj.quotely.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -32,8 +33,8 @@ import com.nj.quotely.presentation.ui.theme.Medium14
 
 
 @Composable
-fun QuoteListItem(item: Quote,onSave:(Quote)-> Unit) {
-    val fillIcon =  if (item.isSaved)  Icons.Default.Favorite else Icons.Default.FavoriteBorder
+fun QuoteListItem(item: Quote, onSave: (Quote) -> Unit) {
+    val fillIcon = if (item.isSaved) Icons.Default.Favorite else Icons.Default.FavoriteBorder
     val favoriteTint = if (item.isSaved) Color.Red else Color.White
     Card(
         modifier = Modifier
@@ -68,19 +69,24 @@ fun QuoteListItem(item: Quote,onSave:(Quote)-> Unit) {
                 Icon(
                     imageVector = Icons.Default.AccountCircle,
                     contentDescription = "avatar",
-                    tint = Color.White,
+                    tint = Color.Black,
                     modifier = Modifier
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(text = item.author, style = MaterialTheme.typography.Bold12.copy(color = Color.White))
+                Text(
+                    text = item.author,
+                    style = MaterialTheme.typography.Bold12.copy(color = Color.White)
+                )
                 SpacerWeight1f()
                 Icon(
                     fillIcon,
                     contentDescription = "save",
                     tint = favoriteTint,
-                    modifier = Modifier.clickable {
-                        onSave(item)
-                    }
+                    modifier = Modifier.clickable(
+                        onClick = { onSave(item) },
+                        indication = null,
+                        interactionSource = MutableInteractionSource()
+                    )
                 )
             }
             Spacer(modifier = Modifier.height(5.dp))

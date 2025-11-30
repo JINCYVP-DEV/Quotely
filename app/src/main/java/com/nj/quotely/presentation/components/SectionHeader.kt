@@ -1,6 +1,7 @@
 package com.nj.quotely.presentation.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,9 +28,8 @@ fun SectionHeader(
         )
 
         Text(
-            endText, style = MaterialTheme.typography.Medium16, modifier = Modifier.clickable {
-                onNavigate()
-            })
+            endText, style = MaterialTheme.typography.Medium16, modifier = Modifier.clickable(onClick = { onNavigate()},indication = null, interactionSource = MutableInteractionSource())
+        )
     }
 
 }

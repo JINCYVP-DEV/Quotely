@@ -3,14 +3,23 @@ package com.nj.quotely.presentation.screens.saved
 import androidx.lifecycle.ViewModel
 import com.nj.quotely.data.Quote
 import com.nj.quotely.data.SavedQuotesDataSource
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class SavedScreenViewModel: ViewModel() {
 
-    val savedItems: StateFlow<List<Quote>> = SavedQuotesDataSource.savedItems
+    private var _savedItems: MutableStateFlow<List<Quote>> = MutableStateFlow(emptyList())
+    val savedItems: StateFlow<List<Quote>> =_savedItems.asStateFlow()
+    val allData: StateFlow<List<Quote>> = SavedQuotesDataSource.savedItems
 
-    fun savedItems(quote: Quote)
+
+    init {
+        _savedItems.value=  SavedQuotesDataSource.savedItems.value.filter { it.isSaved }
+    }
+
+    fun onSaveItem(quote: Quote)
     {
-        SavedQuotesDataSource.toggleSaveStatus(quote)
+      SavedQuotesDataSource.onSave(quote)
     }
 }

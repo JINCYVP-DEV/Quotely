@@ -44,7 +44,7 @@ fun SavedScreen(viewModel: SavedScreenViewModel= viewModel(), onNavigation: (Sav
                 QuoteListItem(
                     it,
                     onSave = {
-                        viewModel.savedItems(it)
+                        viewModel.onSaveItem(it)
                     }
                 )
             }

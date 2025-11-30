@@ -16,6 +16,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nj.quotely.R
 import com.nj.quotely.presentation.components.QuoteListItem
 import com.nj.quotely.presentation.components.QuotelyTopBar
+import com.nj.quotely.presentation.screens.saved.SavedScreenViewModel
 
 sealed class ExploreScreenNavigation {
     object OnBackPressed : ExploreScreenNavigation()
@@ -23,11 +24,11 @@ sealed class ExploreScreenNavigation {
 
 @Composable
 fun ExploreScreen(
-    viewModel: ExploreViewModel = viewModel(),
+    viewModel: SavedScreenViewModel = viewModel(),
     onNavigation: (ExploreScreenNavigation) -> Unit
 ) {
 
-    val allQuotes = viewModel.quotesList.collectAsStateWithLifecycle()
+    val allQuotes = viewModel.allData.collectAsStateWithLifecycle()
     Scaffold(topBar = {
         QuotelyTopBar(
             title = stringResource(R.string.text_explore),
@@ -46,7 +47,7 @@ fun ExploreScreen(
                 QuoteListItem(
                     it,
                     onSave = {
-                        viewModel.onSave(it)
+                        viewModel.onSaveItem(it)
                     }
                 )
             }
@@ -55,5 +56,4 @@ fun ExploreScreen(
             }
         }
     }
-
 }

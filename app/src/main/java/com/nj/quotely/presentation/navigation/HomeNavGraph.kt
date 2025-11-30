@@ -15,7 +15,6 @@ import com.nj.quotely.presentation.screens.explore.ExploreScreenNavigation
 import com.nj.quotely.presentation.screens.home.HomeScreen
 import com.nj.quotely.presentation.screens.home.HomeScreenNavigation
 import com.nj.quotely.presentation.screens.saved.SavedScreen
-import com.nj.quotely.presentation.screens.saved.SavedScreenNavigation
 
 @Composable
 fun AppNavGraph(navController: NavHostController, modifier: Modifier) {
@@ -51,12 +50,6 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier) {
 
         composable(BottomBarScreen.SAVED.route) {
             SavedScreen { onNavigation ->
-                when (onNavigation) {
-                    is SavedScreenNavigation.OnBackPressed -> {
-                        navController.popBackStack()
-                    }
-                }
-
             }
         }
         composable(
